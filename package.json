@@ -16,6 +16,8 @@
     "check:staged:fix": "biome check src/ test/ --staged --fix"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.1.2"
+    "@biomejs/biome": "2.1.2",
+    "@types/node": "^24.1.0",
+    "typescript": "^5.8.3"
   }
 }
