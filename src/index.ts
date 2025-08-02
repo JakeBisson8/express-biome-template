@@ -1,9 +1,11 @@
 import http from 'node:http';
 import app from './app';
 
+const { HTTP_PORT } = process.env;
+
 const httpServer = http.createServer(app);
 
-httpServer.listen(80, () => {
+httpServer.listen(HTTP_PORT || 80, () => {
   console.log('Listening on port 80');
 });
 
