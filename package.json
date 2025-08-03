@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@dotenvx/dotenvx": "^1.48.4",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "winston": "^3.17.0"
   }
 }
