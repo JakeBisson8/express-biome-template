@@ -3,8 +3,6 @@ import app from './app';
 
 const { HTTP_PORT } = process.env;
 
-console.log(process.env.NODE_ENV);
-
 const httpServer = http.createServer(app);
 
 httpServer.listen(HTTP_PORT || 80, () => {
