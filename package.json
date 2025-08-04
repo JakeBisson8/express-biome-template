@@ -16,7 +16,7 @@
     "check": "biome check src/ test/",
     "check:fix": "biome check src/ test/ --fix",
     "check:staged": "biome check src/ test/ --staged",
-    "check:staged:fix": "biome check src/ test/ --staged --fix"
+    "check:staged:fix": "biome check src/ test/ --staged --fix --files-ignore-unknown=true --no-errors-on-unmatched"
   },
   "devDependencies": {
     "@biomejs/biome": "2.1.2",
@@ -24,6 +24,7 @@
     "@types/morgan": "^1.9.10",
     "@types/node": "^24.1.0",
     "cross-env": "^10.0.0",
+    "lefthook": "^1.12.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   },
