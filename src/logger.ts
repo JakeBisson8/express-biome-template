@@ -23,8 +23,8 @@ const logger = winston.createLogger({
   transports: [combinedLogTransport, errorLogTransport],
 });
 
-// Add the console transport if we are not within production environment
-if (NODE_ENV !== 'production') {
+// Add the console transport if we are in development
+if (NODE_ENV === 'development') {
   logger.add(consoleLogTransport);
 }
 
