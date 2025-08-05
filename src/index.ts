@@ -21,5 +21,3 @@ process.on('SIGTERM', () => {
   logger.info(`Received SIGTERM... shutting down gracefully.`);
   httpServer.close();
 });
-
-logger.info('TEST');
