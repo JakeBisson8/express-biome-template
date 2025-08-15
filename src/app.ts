@@ -1,14 +1,13 @@
 import express from 'express';
-import { httpDevLogger, httpErrorLogger, httpLogger } from './httplogger';
-
-const { NODE_ENV } = process.env;
+import { httpDevLogger, httpErrorLogger, httpLogger } from './config/httplogger';
+import { environment } from './environment';
 
 const app = express();
 
 // Setup HTTP Logger
 app.use(httpLogger);
 app.use(httpErrorLogger);
-if (NODE_ENV === 'development') {
+if (environment.NODE_ENV === 'development') {
   app.use(httpDevLogger);
 }
 
