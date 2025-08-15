@@ -1,15 +1,12 @@
 import http from 'node:http';
 import app from './app';
+import { environment } from './environment';
 import logger from './logger';
-
-const { HTTP_PORT } = process.env;
-
-logger.info('Hello World');
 
 const httpServer = http.createServer(app);
 
-httpServer.listen(HTTP_PORT, () => {
-  logger.info(`HTTP server listening on ${HTTP_PORT}`);
+httpServer.listen(environment.HTTP_PORT, () => {
+  logger.info(`HTTP server listening on ${environment.HTTP_PORT}`);
 });
 
 process.on('SIGINT', () => {
