@@ -1,14 +1,13 @@
-node_modules/
-dist/
+# ignored folders
+node_modules
+dist
+logs
 
 # ignore env files except for the example one
 .env
 .env.*
 !.env.example
 
-# ignore ssl folder and files
-ssl/
+# ignore ssl files
+ssl/*
 !ssl/.gitkeep
-
-# ignore log files
-logs
