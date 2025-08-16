@@ -17,6 +17,9 @@ const EnvironmentSchema = z.object({
   SSL_MAX_VERSION: SecureVersionSchema,
   SSL_CIPHERS: z.string(),
   ECDH_CURVES: z.string(),
+  HSTS_MAX_AGE: z.coerce.number().int(),
+  HSTS_INCLUDE_SUBDOMAINS: z.enum(['true', 'false']).transform((v) => v === 'true'),
+  HSTS_PRELOAD: z.enum(['true', 'false']).transform((v) => v === 'true'),
 });
 
 export type Environment = z.infer<typeof EnvironmentSchema>;
