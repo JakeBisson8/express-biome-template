@@ -5,6 +5,7 @@ import { environment } from './environment';
 import { httpRedirectToHttps } from './middleware/http-redirect-to-https';
 
 const app = express();
+app.use(express.json());
 
 // Setup helmet with HSTS
 app.use(
