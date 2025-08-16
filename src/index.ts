@@ -3,10 +3,21 @@ import https, { type ServerOptions } from 'node:https';
 import app from './app';
 import logger from './config/logger';
 import { environment } from './environment';
+import { getSSLFile } from './Utils/file-management';
 
+// HTTP & HTTPS servers
 const httpServer = http.createServer(app);
-
-const options: ServerOptions = environment.HTTPS_ENABLED ? {} : {};
+const options: ServerOptions = environment.HTTPS_ENABLED
+  ? {
+      cert: getSSLFile(environment.SSL_CERTIFICATE_FILE),
+      key: getSSLFile(environment.SSL_KEY_FILE),
+      dhparam: getSSLFile(environment.DH_PARAM_FILE),
+      minVersion: environment.SSL_MIN_VERSION,
+      maxVersion: environment.SSL_MAX_VERSION,
+      ciphers: environment.SSL_CIPHERS,
+      ecdhCurve: environment.ECDH_CURVES,
+    }
+  : {};
 const httpsServer = https.createServer(options, app);
 
 const startup = () => {
@@ -24,8 +35,6 @@ const startup = () => {
 };
 
 const shutdown = async () => {
-  logger.info('Shutting down...');
-
   const shutdownHTTP = new Promise<void>((resolve, reject) => {
     if (!environment.HTTP_ENABLED) return resolve();
 

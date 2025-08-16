@@ -8,7 +8,7 @@
   "scripts": {
     "build": "tsc",
     "start": "dotenvx run -- cross-env NODE_ENV=production node ./dist/index.js",
-    "dev": "dotenvx run -- cross-env NODE_ENV=development node --watch -r ts-node/register ./src/index.ts",
+    "dev": "dotenvx run -- cross-env NODE_ENV=development nodemon ./src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "biome format src/ test/ --write",
     "lint": "biome lint src/ test/",
@@ -25,6 +25,7 @@
     "@types/node": "^24.1.0",
     "cross-env": "^10.0.0",
     "lefthook": "^1.12.2",
+    "nodemon": "^3.1.10",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   },
