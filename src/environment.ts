@@ -2,8 +2,8 @@ import { z } from 'zod';
 
 // Not exporting this to force people to use this file to get their parsed environment variable
 const EnvironmentSchema = z.object({
-  HTTPS_ENABLED: z.coerce.boolean(),
-  HTTP_ENABLED: z.coerce.boolean(),
+  HTTPS_ENABLED: z.enum(['true', 'false']).transform((v) => v === 'true'),
+  HTTP_ENABLED: z.enum(['true', 'false']).transform((v) => v === 'true'),
   HTTP_PORT: z.coerce.number().int(),
   HTTPS_PORT: z.coerce.number().int(),
   NODE_ENV: z.string(),
