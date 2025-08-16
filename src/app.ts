@@ -1,3 +1,4 @@
+import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
 import { httpDevLogger, httpErrorLogger, httpLogger } from './config/httplogger';
@@ -6,6 +7,9 @@ import { httpRedirectToHttps } from './middleware/http-redirect-to-https';
 
 const app = express();
 app.use(express.json());
+
+// Setup cors
+app.use(cors());
 
 // Setup helmet with HSTS
 app.use(
