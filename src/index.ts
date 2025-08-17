@@ -1,9 +1,9 @@
 import http from 'node:http';
 import https, { type ServerOptions } from 'node:https';
-import app from './app';
 import logger from './config/logger';
 import { environment } from './environment';
-import { getSSLFile } from './Utils/file-management';
+import app from './v1/app';
+import { getSSLFile } from './v1/Utils/file-management';
 
 // HTTP & HTTPS servers
 const httpServer = http.createServer(app);
@@ -38,11 +38,14 @@ const shutdown = async () => {
   const shutdownHTTP = new Promise<void>((resolve, reject) => {
     if (!environment.HTTP_ENABLED) return resolve();
 
+    httpServer.closeIdleConnections();
+
     httpServer.close((err) => {
       if (err) {
         logger.error(`Error shutting down http server`);
         return reject(err);
       }
+      logger.info('HTTP server shutdown');
       resolve();
     });
   });
@@ -50,11 +53,14 @@ const shutdown = async () => {
   const shutdownHTTPS = new Promise<void>((resolve, reject) => {
     if (!environment.HTTPS_ENABLED) return resolve();
 
+    httpServer.closeIdleConnections();
+
     httpsServer.close((err) => {
       if (err) {
         logger.error('Error shutting down https server');
         return reject(err);
       }
+      logger.info('HTTPS server shutdown');
       resolve();
     });
   });

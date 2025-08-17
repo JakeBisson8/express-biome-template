@@ -1,8 +1,8 @@
 import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
-import { httpDevLogger, httpErrorLogger, httpLogger } from './config/httplogger';
-import { environment } from './environment';
+import { httpDevLogger, httpErrorLogger, httpLogger } from '../config/httplogger';
+import { environment } from '../environment';
 import { httpRedirectToHttps } from './middleware/http-redirect-to-https';
 
 const app = express();
