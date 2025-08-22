@@ -38,7 +38,7 @@ const shutdown = async () => {
   const shutdownHTTP = new Promise<void>((resolve, reject) => {
     if (!environment.HTTP_ENABLED) return resolve();
 
-    httpServer.closeIdleConnections();
+    httpServer.closeAllConnections();
 
     httpServer.close((err) => {
       if (err) {
@@ -53,7 +53,7 @@ const shutdown = async () => {
   const shutdownHTTPS = new Promise<void>((resolve, reject) => {
     if (!environment.HTTPS_ENABLED) return resolve();
 
-    httpServer.closeIdleConnections();
+    httpServer.closeAllConnections();
 
     httpsServer.close((err) => {
       if (err) {
