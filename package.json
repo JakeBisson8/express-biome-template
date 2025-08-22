@@ -15,8 +15,8 @@
     "lint:fix": "biome lint src/ test/ --fix",
     "check": "biome check src/ test/",
     "check:fix": "biome check src/ test/ --fix",
-    "check:staged": "biome check src/ test/ --staged",
-    "check:staged:fix": "biome check src/ test/ --staged --fix --files-ignore-unknown=true --no-errors-on-unmatched"
+    "check:staged": "biome check src/ test/ --staged --files-ignore-unknown=true --no-errors-on-unmatched --error-on-warnings",
+    "check:staged:fix": "biome check src/ test/ --staged --fix --files-ignore-unknown=true --no-errors-on-unmatched --error-on-warnings"
   },
   "devDependencies": {
     "@biomejs/biome": "2.1.2",
