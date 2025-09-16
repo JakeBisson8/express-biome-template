@@ -19,7 +19,7 @@
     "check:staged:fix": "biome check src/ test/ --staged --fix --files-ignore-unknown=true --no-errors-on-unmatched --error-on-warnings"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.1.2",
+    "@biomejs/biome": "^2.2.4",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/morgan": "^1.9.10",
